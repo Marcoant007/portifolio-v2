@@ -113,7 +113,7 @@
   align-items: flex-start;
   gap: var(--space-4);
   width: 100%;
-  height: 100%;
+  height: 150px;
   text-align: left;
   padding: var(--space-5);
   border: 1px solid var(--border);
@@ -172,6 +172,9 @@ button.courseCard:hover {
   font-size: var(--fs-sm);
   color: var(--text-primary);
   line-height: var(--lh-snug);
+  flex-shrink: 0;
+  max-height: calc(var(--fs-sm) * var(--lh-snug) * 2);
+  overflow: hidden;
 }
 
 .courseYear {

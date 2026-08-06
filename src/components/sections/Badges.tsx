@@ -26,7 +26,6 @@ function BadgeCard({ badge, onOpen }: { badge: EarnedBadge; onOpen: () => void }
       />
       <span className={styles.badgeTitle}>{badge.title}</span>
       <span className={styles.badgeIssuer}>{badge.issuer}</span>
-      {badge.date && <span className={styles.badgeDate}>{badge.date}</span>}
     </button>
   );
 }

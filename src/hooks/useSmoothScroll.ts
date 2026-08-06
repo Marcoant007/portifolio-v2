@@ -14,6 +14,7 @@ export function useSmoothScroll() {
     const lenis = new Lenis({
       duration: 1.1,
       smoothWheel: true,
+      anchors: true,
     });
 
     lenis.on("scroll", ScrollTrigger.update);
@@ -23,6 +24,17 @@ export function useSmoothScroll() {
     };
     gsap.ticker.add(onTick);
     gsap.ticker.lagSmoothing(0);
+
+    // Lenis owns scroll from here on, so a native browser hash-jump (direct
+    // link to a section, restored scroll on refresh) fights it and gets
+    // snapped back — driving the same jump through Lenis keeps it and
+    // ScrollTrigger in sync, so already-passed triggers fire immediately
+    // instead of leaving their targets stuck hidden.
+    if (window.location.hash) {
+      requestAnimationFrame(() => {
+        lenis.scrollTo(window.location.hash, { immediate: true, force: true });
+      });
+    }
 
     return () => {
       gsap.ticker.remove(onTick);

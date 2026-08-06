@@ -68,6 +68,9 @@ export const stack: StackItem[] = [
   { name: "Jest", category: "Ferramentas", iconUrl: `${DEVICON}/jest/jest-plain.svg`, color: "#C1425F" },
   { name: "JUnit", category: "Ferramentas", iconUrl: `${DEVICON}/junit/junit-plain.svg`, color: "#DC514A" },
   { name: "SonarQube", category: "Ferramentas", iconUrl: `${DEVICON}/sonarqube/sonarqube-original.svg`, color: "#4E9BD5" },
+  { name: "Snyk", category: "Ferramentas", iconUrl: `${DEVICON}/snyk/snyk-original.svg`, color: "#0C4A6E" },
+  { name: "Postman", category: "Ferramentas", iconUrl: `${DEVICON}/postman/postman-original.svg`, color: "#FF6C37" },
+  { name: "IntelliJ IDEA", category: "Ferramentas", iconUrl: `${DEVICON}/intellij/intellij-original.svg`, color: "#000000" },
 ];
 
 export const stackCategories = [
