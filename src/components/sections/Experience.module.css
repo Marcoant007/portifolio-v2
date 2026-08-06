@@ -1,18 +1,21 @@
-.timeline {
+.timelineWrap {
   position: relative;
+}
+
+.timeline {
   display: flex;
   flex-direction: column;
   gap: var(--space-7);
 }
 
-.timeline::before {
-  content: "";
+.line {
   position: absolute;
   left: 21px;
   top: 8px;
   bottom: 8px;
   width: 1px;
-  background: var(--border);
+  background: linear-gradient(to bottom, var(--accent-border), var(--border) 40%);
+  will-change: transform;
 }
 
 .item {
@@ -129,7 +132,7 @@
 }
 
 @media (max-width: 560px) {
-  .timeline::before {
+  .line {
     left: 17px;
   }
 

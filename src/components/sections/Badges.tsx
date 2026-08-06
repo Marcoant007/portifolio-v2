@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { useGSAP } from "@gsap/react";
 import { earnedBadges } from "../../data/badges";
 import { githubAchievements } from "../../data/githubAchievements";
 import type { EarnedBadge } from "../../types";
 import { Section } from "../ui/Section";
-import { RevealOnScroll } from "../ui/RevealOnScroll";
 import { Lightbox } from "../ui/Lightbox";
 import { ArrowUpRightIcon } from "../ui/icons";
+import { gsap, EASE, revealCards, prefersReducedMotion } from "../../lib/gsap";
 import styles from "./Badges.module.css";
 import lightboxStyles from "../ui/Lightbox.module.css";
 
@@ -33,6 +34,32 @@ function BadgeCard({ badge, onOpen }: { badge: EarnedBadge; onOpen: () => void }
 export function Badges() {
   const [activeBadge, setActiveBadge] = useState<EarnedBadge | null>(null);
 
+  const headingsRef = useRef<Array<HTMLElement | null>>([]);
+  headingsRef.current = [];
+  const addHeadingRef = (el: HTMLElement | null) => {
+    if (el) headingsRef.current.push(el);
+  };
+
+  const badgeGridRef = useRef<HTMLDivElement | null>(null);
+  const achievementGridRef = useRef<HTMLDivElement | null>(null);
+
+  useGSAP(() => {
+    revealCards(badgeGridRef.current);
+    revealCards(achievementGridRef.current);
+
+    if (!prefersReducedMotion()) {
+      headingsRef.current.forEach((heading) => {
+        gsap.from(heading, {
+          opacity: 0,
+          y: 16,
+          duration: 0.5,
+          ease: EASE,
+          scrollTrigger: { trigger: heading, start: "top 90%" },
+        });
+      });
+    }
+  });
+
   return (
     <Section
       id="badges"
@@ -40,24 +67,26 @@ export function Badges() {
       title="Badges & certificações"
       subtitle="Estatísticas geradas dinamicamente a partir do GitHub e os badges conquistados ao longo do caminho."
     >
-      <RevealOnScroll className={styles.earnedGroup}>
-        <div className={styles.earnedHeader}>
+      <div className={styles.earnedGroup}>
+        <div ref={addHeadingRef} className={styles.earnedHeader}>
           <h3 className={styles.certGroupTitle}>Badges conquistados</h3>
           <a className={styles.credlyLink} href={CREDLY_PROFILE_URL} target="_blank" rel="noreferrer">
             Ver perfil no Credly
             <ArrowUpRightIcon width={14} height={14} />
           </a>
         </div>
-        <div className={styles.badgeGrid}>
+        <div ref={badgeGridRef} className={styles.badgeGrid}>
           {earnedBadges.map((badge) => (
             <BadgeCard key={badge.title} badge={badge} onOpen={() => setActiveBadge(badge)} />
           ))}
         </div>
-      </RevealOnScroll>
+      </div>
 
-      <RevealOnScroll className={styles.earnedGroup}>
-        <h3 className={styles.certGroupTitle}>Conquistas no GitHub</h3>
-        <div className={styles.achievementGrid}>
+      <div className={styles.earnedGroup}>
+        <h3 ref={addHeadingRef} className={styles.certGroupTitle}>
+          Conquistas no GitHub
+        </h3>
+        <div ref={achievementGridRef} className={styles.achievementGrid}>
           {githubAchievements.map((achievement) => (
             <a
               key={achievement.title}
@@ -83,7 +112,7 @@ export function Badges() {
             </a>
           ))}
         </div>
-      </RevealOnScroll>
+      </div>
 
       {activeBadge && (
         <Lightbox labelledBy="badge-lightbox-title" onClose={() => setActiveBadge(null)}>

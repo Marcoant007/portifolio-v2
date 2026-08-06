@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { useGSAP } from "@gsap/react";
 import { videos } from "../../data/videos";
 import type { VideoItem } from "../../types";
 import { Section } from "../ui/Section";
-import { RevealOnScroll } from "../ui/RevealOnScroll";
 import { PlayIcon } from "../ui/icons";
+import { revealCards } from "../../lib/gsap";
 import styles from "./Videos.module.css";
-
 
 function YoutubeFacade({ youtubeId, title }: { youtubeId: string; title: string }) {
   const [playing, setPlaying] = useState(false);
@@ -39,7 +39,7 @@ function YoutubeFacade({ youtubeId, title }: { youtubeId: string; title: string 
 
 function VideoCard({ video }: { video: VideoItem }) {
   return (
-    <RevealOnScroll as="article" className={styles.card}>
+    <article className={styles.card}>
       <div className={styles.frame}>
         {video.isPlaceholder ? (
           <div className={styles.placeholder}>adicione um vídeo em src/data/videos.ts</div>
@@ -49,14 +49,20 @@ function VideoCard({ video }: { video: VideoItem }) {
       </div>
       <h3 className={styles.title}>{video.title}</h3>
       <p className={styles.description}>{video.description}</p>
-    </RevealOnScroll>
+    </article>
   );
 }
 
 export function Videos() {
+  const gridRef = useRef<HTMLDivElement | null>(null);
+
+  useGSAP(() => {
+    revealCards(gridRef.current);
+  });
+
   return (
     <Section id="videos" eyebrow="Vídeos" title="Me acompanhe também no youtube">
-      <div className={styles.grid}>
+      <div ref={gridRef} className={styles.grid}>
         {videos.map((video) => (
           <VideoCard key={video.title} video={video} />
         ))}

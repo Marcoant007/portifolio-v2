@@ -9,6 +9,7 @@
   position: relative;
   display: flex;
   justify-content: center;
+  perspective: 1200px;
 }
 
 .photoWrap::before {
@@ -30,6 +31,8 @@
   overflow: hidden;
   border: 1px solid var(--border);
   background: var(--surface);
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
 .photo {

@@ -1,10 +1,18 @@
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
 import { docs } from "../../data/docs";
 import { Section } from "../ui/Section";
-import { RevealOnScroll } from "../ui/RevealOnScroll";
 import { ArrowUpRightIcon } from "../ui/icons";
+import { revealCards } from "../../lib/gsap";
 import styles from "./Docs.module.css";
 
 export function Docs() {
+  const listRef = useRef<HTMLUListElement | null>(null);
+
+  useGSAP(() => {
+    revealCards(listRef.current, { y: 20, scale: 1, stagger: 0.06 });
+  });
+
   return (
     <Section
       id="docs"
@@ -12,10 +20,10 @@ export function Docs() {
       title="Documentação & notas técnicas"
       subtitle="Sem blog por enquanto — então as notas abaixo vêm direto dos READMEs dos meus próprios laboratórios."
     >
-      <ul className={styles.list}>
+      <ul ref={listRef} className={styles.list}>
         {docs.map((doc) => (
           <li key={doc.href}>
-            <RevealOnScroll as="div" className={styles.item}>
+            <div className={styles.item}>
               <a href={doc.href} target="_blank" rel="noreferrer">
                 <div className={styles.meta}>
                   <span>{doc.date}</span>
@@ -29,7 +37,7 @@ export function Docs() {
                 Ler no GitHub
                 <ArrowUpRightIcon width={14} height={14} />
               </a>
-            </RevealOnScroll>
+            </div>
           </li>
         ))}
       </ul>

@@ -6,6 +6,24 @@
   background: color-mix(in srgb, var(--bg) 82%, transparent);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  transition: box-shadow var(--dur-med) var(--ease), background-color var(--dur-med) var(--ease);
+}
+
+.header:global(.is-scrolled) {
+  background: color-mix(in srgb, var(--bg) 94%, transparent);
+  box-shadow: 0 16px 30px -24px hsl(var(--shadow-color) / 0.7);
+}
+
+.progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: linear-gradient(to right, var(--accent), var(--accent-strong));
+  transform: scaleX(0);
+  transform-origin: left;
+  will-change: transform;
 }
 
 .bar {

@@ -1,8 +1,27 @@
 .hero {
+  position: relative;
+  overflow: hidden;
   min-height: calc(100dvh - 72px);
   display: flex;
   align-items: center;
   padding-block: var(--space-8);
+}
+
+.glow {
+  position: absolute;
+  top: -25%;
+  right: -12%;
+  z-index: 0;
+  width: min(640px, 70vw);
+  height: min(640px, 70vw);
+  background: radial-gradient(circle, var(--accent-soft), transparent 70%);
+  pointer-events: none;
+  will-change: transform;
+}
+
+.hero :global(.container) {
+  position: relative;
+  z-index: 1;
 }
 
 .badge {

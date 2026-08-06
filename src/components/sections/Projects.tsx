@@ -1,17 +1,35 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { useGSAP } from "@gsap/react";
 import { projects } from "../../data/projects";
 import type { Project } from "../../types";
 import { Section } from "../ui/Section";
 import { ProjectCard } from "../ui/ProjectCard";
 import { ProjectGallery } from "../ui/ProjectGallery";
-import { RevealOnScroll } from "../ui/RevealOnScroll";
 import { ArrowUpRightIcon } from "../ui/icons";
+import { gsap, EASE, revealCards, prefersReducedMotion } from "../../lib/gsap";
 import styles from "./Projects.module.css";
 
 export function Projects() {
   const featured = projects.filter((project) => project.featured);
   const rest = projects.filter((project) => !project.featured);
   const [activeProject, setActiveProject] = useState<Project | null>(null);
+
+  const gridRef = useRef<HTMLDivElement | null>(null);
+  const moreRef = useRef<HTMLDivElement | null>(null);
+
+  useGSAP(() => {
+    revealCards(gridRef.current);
+
+    if (moreRef.current && !prefersReducedMotion()) {
+      gsap.from(moreRef.current, {
+        opacity: 0,
+        y: 24,
+        duration: 0.6,
+        ease: EASE,
+        scrollTrigger: { trigger: moreRef.current, start: "top 90%" },
+      });
+    }
+  });
 
   return (
     <Section
@@ -20,16 +38,14 @@ export function Projects() {
       title="Projetos em destaque"
       subtitle="Uma seleção do que mais representa como eu trabalho hoje — não necessariamente do mais recente."
     >
-      <div className={styles.grid}>
-        {featured.map((project, index) => (
-          <RevealOnScroll key={project.slug} delay={Math.min(index, 3) * 70}>
-            <ProjectCard project={project} onExpand={() => setActiveProject(project)} />
-          </RevealOnScroll>
+      <div ref={gridRef} className={styles.grid}>
+        {featured.map((project) => (
+          <ProjectCard key={project.slug} project={project} onExpand={() => setActiveProject(project)} />
         ))}
       </div>
 
       {rest.length > 0 && (
-        <RevealOnScroll as="div" className={styles.more}>
+        <div ref={moreRef} className={styles.more}>
           <div className={styles.moreHeader}>
             <h3 className={styles.moreTitle}>Outros projetos</h3>
             <a
@@ -53,7 +69,7 @@ export function Projects() {
               </li>
             ))}
           </ul>
-        </RevealOnScroll>
+        </div>
       )}
 
       {activeProject?.images && (

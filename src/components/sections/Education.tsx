@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { useGSAP } from "@gsap/react";
 import { education } from "../../data/education";
 import { courses } from "../../data/courses";
 import type { Course } from "../../types";
 import { Section } from "../ui/Section";
-import { RevealOnScroll } from "../ui/RevealOnScroll";
 import { Lightbox } from "../ui/Lightbox";
 import { ArrowUpRightIcon, ExpandIcon } from "../ui/icons";
+import { gsap, EASE, revealCards, prefersReducedMotion } from "../../lib/gsap";
 import styles from "./Education.module.css";
 import lightboxStyles from "../ui/Lightbox.module.css";
 
@@ -16,7 +17,7 @@ function monogram(institution: string) {
 
 function FeaturedCard({ item }: { item: Course }) {
   return (
-    <RevealOnScroll as="article" className={styles.featuredCard}>
+    <article className={styles.featuredCard}>
       <span className={styles.featuredLogo}>
         {item.logo ? <img src={item.logo} alt="" loading="lazy" decoding="async" /> : monogram(item.institution)}
       </span>
@@ -34,7 +35,7 @@ function FeaturedCard({ item }: { item: Course }) {
 
         {item.description && <p className={styles.featuredDescription}>{item.description}</p>}
       </div>
-    </RevealOnScroll>
+    </article>
   );
 }
 
@@ -59,6 +60,25 @@ function CourseCard({ course, onOpen }: { course: Course; onOpen: () => void }) 
 export function Education() {
   const [activeItem, setActiveItem] = useState<Course | null>(null);
 
+  const featuredGridRef = useRef<HTMLDivElement | null>(null);
+  const groupTitleRef = useRef<HTMLHeadingElement | null>(null);
+  const courseGridRef = useRef<HTMLDivElement | null>(null);
+
+  useGSAP(() => {
+    revealCards(featuredGridRef.current, { y: 24, scale: 0.97 });
+    revealCards(courseGridRef.current);
+
+    if (groupTitleRef.current && !prefersReducedMotion()) {
+      gsap.from(groupTitleRef.current, {
+        opacity: 0,
+        y: 16,
+        duration: 0.5,
+        ease: EASE,
+        scrollTrigger: { trigger: groupTitleRef.current, start: "top 90%" },
+      });
+    }
+  });
+
   return (
     <Section
       id="formacao"
@@ -66,24 +86,24 @@ export function Education() {
       title="Formação & cursos"
       subtitle="Graduação, curso técnico e os cursos e certificações mais relevantes ao longo da carreira."
     >
-      <div className={styles.featuredGrid}>
+      <div ref={featuredGridRef} className={styles.featuredGrid}>
         {education.map((item) => (
           <FeaturedCard key={`${item.institution}-${item.title}`} item={item} />
         ))}
       </div>
 
-      <RevealOnScroll>
-        <h3 className={styles.groupTitle}>Cursos & certificados</h3>
-        <div className={styles.courseGrid}>
-          {courses.map((course) => (
-            <CourseCard
-              key={`${course.institution}-${course.title}`}
-              course={course}
-              onOpen={() => setActiveItem(course)}
-            />
-          ))}
-        </div>
-      </RevealOnScroll>
+      <h3 ref={groupTitleRef} className={styles.groupTitle}>
+        Cursos & certificados
+      </h3>
+      <div ref={courseGridRef} className={styles.courseGrid}>
+        {courses.map((course) => (
+          <CourseCard
+            key={`${course.institution}-${course.title}`}
+            course={course}
+            onOpen={() => setActiveItem(course)}
+          />
+        ))}
+      </div>
 
       {activeItem && (
         <Lightbox

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { Theme } from "../../hooks/useTheme";
+import { useHeaderScroll } from "../../hooks/useHeaderScroll";
 import { ThemeToggle } from "./ThemeToggle";
 import { MenuIcon, CloseIcon } from "../ui/icons";
 import styles from "./Header.module.css";
@@ -21,9 +22,11 @@ interface HeaderProps {
 
 export function Header({ theme, onToggleTheme }: HeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { headerRef, progressRef } = useHeaderScroll();
 
   return (
-    <header className={styles.header}>
+    <header ref={headerRef} className={styles.header}>
+      <div ref={progressRef} className={styles.progress} aria-hidden="true" />
       <div className={`container ${styles.bar}`}>
         <a href="#hero" className={styles.logo} onClick={() => setMobileOpen(false)}>
           <span className={styles.logoMark}>{"<"}/{">"}</span>
