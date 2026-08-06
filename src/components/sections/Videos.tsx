@@ -6,7 +6,7 @@ import { RevealOnScroll } from "../ui/RevealOnScroll";
 import { PlayIcon } from "../ui/icons";
 import styles from "./Videos.module.css";
 
-/** Click-to-load facade: avoids pulling in YouTube's iframe JS until the user actually wants to watch. */
+
 function YoutubeFacade({ youtubeId, title }: { youtubeId: string; title: string }) {
   const [playing, setPlaying] = useState(false);
 
@@ -55,7 +55,7 @@ function VideoCard({ video }: { video: VideoItem }) {
 
 export function Videos() {
   return (
-    <Section id="videos" eyebrow="Vídeos" title="Demos & explicações em vídeo">
+    <Section id="videos" eyebrow="Vídeos" title="Me acompanhe também no youtube">
       <div className={styles.grid}>
         {videos.map((video) => (
           <VideoCard key={video.title} video={video} />

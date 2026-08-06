@@ -65,12 +65,17 @@ export interface EarnedBadge {
 export interface Course {
   institution: string;
   title: string;
-  /** display string, e.g. "Jul 2026" */
+  /** display string, e.g. "Jul 2026" or "2024 — Cursando" */
   year?: string;
   description?: string;
   /** optional institution logo; omit to render a monogram badge */
   logo?: string;
+  /** external verification link (Credly, Udemy, etc.) — shown when there's no certificateImage */
   credentialUrl?: string;
+  /** attached certificate image (screenshot/scan) — click-to-view in a lightbox, like LinkedIn's "see credential" */
+  certificateImage?: string;
+  /** shows a "Cursando" status pill instead of treating the entry as completed */
+  inProgress?: boolean;
 }
 
 export interface GithubAchievement {

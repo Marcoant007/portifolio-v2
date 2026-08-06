@@ -1,17 +1,16 @@
 import type { VideoItem } from "../types";
 
+
 export const videos: VideoItem[] = [
   {
-    title: "Caderneta de Vacina Online — demo",
+    title: "Deixe seu intellij mais intuitivo e produtivo",
     description:
-      "Demonstração do meu TCC no técnico em Informática: um sistema Java Web para gestão de vacinas, com controle de acesso e histórico de imunização.",
-    youtubeId: "Tt4oCoehZr0",
+      "Aprenda a configurar o IntelliJ IDEA para aumentar sua produtividade e tornar o ambiente mais intuitivo, com dicas de atalhos, plugins e customizações.",
+    youtubeId: "Eo5LBxn0EEs",
   },
   {
-    // Placeholder slot — swap `youtubeId` for a real video and set `isPlaceholder` to false.
-    title: "Novo vídeo em breve",
-    description: "Espaço reservado para o próximo vídeo — troque este item em src/data/videos.ts.",
-    youtubeId: "",
-    isPlaceholder: true,
+    title: "Instalando e configurando Oh My Posh no Windows 11 — tutorial",
+    description: "Tutorial passo a passo sobre como instalar e configurar o Oh My Posh no Windows 11.",
+    youtubeId: "9FTjKh7ca4U",
   },
 ];

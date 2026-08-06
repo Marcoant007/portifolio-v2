@@ -27,7 +27,7 @@
   z-index: 1;
   width: 44px;
   height: 44px;
-  border-radius: 50%;
+  border-radius: var(--radius-md);
   border: 1px solid var(--border);
   background: var(--surface);
   display: flex;
@@ -50,7 +50,7 @@
 .logo {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
+  border-radius: var(--radius-md);
   object-fit: cover;
 }
 
@@ -141,6 +141,11 @@
   .badge {
     width: 36px;
     height: 36px;
+    border-radius: var(--radius-sm);
     font-size: var(--fs-xs);
+  }
+
+  .logo {
+    border-radius: var(--radius-sm);
   }
 }

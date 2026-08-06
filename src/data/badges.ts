@@ -58,5 +58,6 @@ export const earnedBadges: EarnedBadge[] = [
     image: confluentBadge,
     description:
       "Fundamentos de streaming de dados com Apache Kafka e Confluent: produtores/consumidores, tópicos e partições, e os padrões de arquitetura orientada a eventos em tempo real.",
+    credentialUrl: "https://certificates.confluent.io/27cc15d5-19b6-44e7-bc7b-ae987dd0c0f7#acc.Y82Mh6cR",
   },
 ];

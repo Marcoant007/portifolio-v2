@@ -5,6 +5,8 @@ import { MenuIcon, CloseIcon } from "../ui/icons";
 import styles from "./Header.module.css";
 
 const NAV_ITEMS = [
+  { href: "#sobre", label: "Sobre" },
+  { href: "#formacao", label: "Formação" },
   { href: "#stack", label: "Stack" },
   { href: "#projetos", label: "Projetos" },
   { href: "#badges", label: "Badges" },
