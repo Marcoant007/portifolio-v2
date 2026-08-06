@@ -80,14 +80,29 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   background: var(--surface);
-  transition: border-color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease),
-    background-color var(--dur-fast) var(--ease);
+  --tilt-rx: 0deg;
+  --tilt-ry: 0deg;
+  transform-style: preserve-3d;
+  transform: perspective(900px) rotateX(var(--tilt-rx)) rotateY(var(--tilt-ry)) scale(1);
+  transition: border-color var(--dur-fast) var(--ease), transform 180ms ease-out,
+    background-color var(--dur-fast) var(--ease), box-shadow 300ms var(--ease);
+  will-change: transform;
 }
 
 .badgeCard:hover {
   border-color: var(--accent-border);
   background: var(--surface-hover);
-  transform: translateY(-3px);
+  transform: perspective(900px) rotateX(var(--tilt-rx)) rotateY(var(--tilt-ry)) scale(1.025);
+  box-shadow: 0 28px 55px -18px hsl(var(--shadow-color) / 0.55);
+}
+
+/* touch devices never set --tilt-rx/--tilt-ry, so give them a discreet
+   press feedback instead of a stuck/absent tilt */
+@media (hover: none) {
+  .badgeCard:active {
+    transform: perspective(900px) scale(1.015);
+    box-shadow: 0 20px 40px -18px hsl(var(--shadow-color) / 0.45);
+  }
 }
 
 .badgeImage {
@@ -98,6 +113,15 @@
   object-fit: contain;
   border-radius: var(--radius-md);
   margin-bottom: var(--space-3);
+  position: relative;
+  z-index: 2;
+  transform: translate3d(0, 0, 0);
+  transition: transform 350ms cubic-bezier(0.22, 1, 0.36, 1), filter 350ms var(--ease);
+}
+
+.badgeCard:hover .badgeImage {
+  transform: translate3d(8px, -20px, 70px) rotateZ(2deg) scale(1.1);
+  filter: drop-shadow(0 18px 16px hsl(var(--shadow-color) / 0.5));
 }
 
 .badgeTitle {
@@ -109,11 +133,18 @@
   flex-shrink: 0;
   max-height: calc(var(--fs-sm) * var(--lh-snug) * 2);
   overflow: hidden;
+  transition: transform 350ms var(--ease);
 }
 
 .badgeIssuer {
   font-size: var(--fs-xs);
   color: var(--accent);
+  transition: transform 350ms var(--ease);
+}
+
+.badgeCard:hover .badgeTitle,
+.badgeCard:hover .badgeIssuer {
+  transform: translateZ(15px);
 }
 
 .badgeDate {
@@ -130,35 +161,105 @@
 }
 
 .achievement {
-  height: 230px;
+  position: relative;
+  height: 192px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--space-3);
-  padding: var(--space-5);
+  padding: var(--space-4);
   text-align: center;
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   background: var(--surface);
+  overflow: hidden;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  --tech-color: var(--accent);
   transition: border-color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease),
     background-color var(--dur-fast) var(--ease);
 }
 
 .achievement:hover {
-  border-color: var(--accent-border);
+  border-color: color-mix(in srgb, var(--tech-color) 55%, var(--border-strong));
   background: var(--surface-hover);
   transform: translateY(-3px);
 }
 
+/* layer 2: very soft light bleed that follows the cursor, tinted per-achievement */
+.glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle 220px at var(--mouse-x) var(--mouse-y),
+    color-mix(in srgb, var(--tech-color) 22%, transparent),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 250ms var(--ease);
+  pointer-events: none;
+}
+
+/* layer 3: dotted grid, only revealed inside the spotlight mask around the cursor */
+.dots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--tech-color) 85%, transparent) 1.2px,
+    transparent 1.4px
+  );
+  background-size: 8px 8px;
+  -webkit-mask-image: radial-gradient(
+    circle 150px at var(--mouse-x) var(--mouse-y),
+    black 0%,
+    rgba(0, 0, 0, 0.7) 35%,
+    transparent 75%
+  );
+  mask-image: radial-gradient(
+    circle 150px at var(--mouse-x) var(--mouse-y),
+    black 0%,
+    rgba(0, 0, 0, 0.7) 35%,
+    transparent 75%
+  );
+  opacity: 0;
+  transition: opacity 250ms var(--ease);
+  pointer-events: none;
+}
+
+.achievement:hover .glow,
+.achievement:hover .dots {
+  opacity: 1;
+}
+
+/* touch devices never update --mouse-x/y, so give them a fixed, discreet, non-tracking version instead */
+@media (hover: none) {
+  .achievement:active .glow {
+    opacity: 0.6;
+  }
+  .achievement:active .dots {
+    opacity: 0.4;
+  }
+}
+
 .achievementImage {
+  position: relative;
+  z-index: 1;
   width: 88px;
   height: 88px;
   flex-shrink: 0;
   border-radius: 50%;
   border: 1px solid var(--border);
+  transition: filter 250ms var(--ease);
+}
+
+.achievement:hover .achievementImage {
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--tech-color) 55%, transparent));
 }
 
 .achievementTitleRow {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-shrink: 0;
   align-items: center;

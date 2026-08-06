@@ -1,20 +1,24 @@
-import { useRef, useState } from "react";
+import { useRef, useState, type CSSProperties } from "react";
 import { useGSAP } from "@gsap/react";
 import { earnedBadges } from "../../data/badges";
 import { githubAchievements } from "../../data/githubAchievements";
-import type { EarnedBadge } from "../../types";
+import type { EarnedBadge, GithubAchievement } from "../../types";
 import { Section } from "../ui/Section";
 import { Lightbox } from "../ui/Lightbox";
 import { ArrowUpRightIcon } from "../ui/icons";
 import { gsap, EASE, revealCards, prefersReducedMotion } from "../../lib/gsap";
+import { useCardTilt } from "../../hooks/useCardTilt";
+import { usePointerSpotlight } from "../../hooks/usePointerSpotlight";
 import styles from "./Badges.module.css";
 import lightboxStyles from "../ui/Lightbox.module.css";
 
 const CREDLY_PROFILE_URL = "https://www.credly.com/users/marcoantdev/badges/credly";
 
 function BadgeCard({ badge, onOpen }: { badge: EarnedBadge; onOpen: () => void }) {
+  const tiltRef = useCardTilt<HTMLButtonElement>();
+
   return (
-    <button type="button" className={styles.badgeCard} onClick={onOpen}>
+    <button ref={tiltRef} type="button" className={styles.badgeCard} onClick={onOpen}>
       <img
         className={styles.badgeImage}
         src={badge.image}
@@ -27,6 +31,38 @@ function BadgeCard({ badge, onOpen }: { badge: EarnedBadge; onOpen: () => void }
       <span className={styles.badgeTitle}>{badge.title}</span>
       <span className={styles.badgeIssuer}>{badge.issuer}</span>
     </button>
+  );
+}
+
+function AchievementCard({ achievement }: { achievement: GithubAchievement }) {
+  const spotlightRef = usePointerSpotlight<HTMLAnchorElement>();
+
+  return (
+    <a
+      ref={spotlightRef}
+      className={styles.achievement}
+      href={achievement.href}
+      target="_blank"
+      rel="noreferrer"
+      title={achievement.title}
+      style={{ "--tech-color": achievement.color } as CSSProperties}
+    >
+      <span className={styles.glow} aria-hidden="true" />
+      <span className={styles.dots} aria-hidden="true" />
+      <img
+        className={styles.achievementImage}
+        src={achievement.image}
+        alt=""
+        loading="lazy"
+        decoding="async"
+        width={88}
+        height={88}
+      />
+      <span className={styles.achievementTitleRow}>
+        <span className={styles.achievementTitle}>{achievement.title}</span>
+        {achievement.tier && <span className={styles.achievementTier}>{achievement.tier}</span>}
+      </span>
+    </a>
   );
 }
 
@@ -87,28 +123,7 @@ export function Badges() {
         </h3>
         <div ref={achievementGridRef} className={styles.achievementGrid}>
           {githubAchievements.map((achievement) => (
-            <a
-              key={achievement.title}
-              className={styles.achievement}
-              href={achievement.href}
-              target="_blank"
-              rel="noreferrer"
-              title={achievement.title}
-            >
-              <img
-                className={styles.achievementImage}
-                src={achievement.image}
-                alt=""
-                loading="lazy"
-                decoding="async"
-                width={88}
-                height={88}
-              />
-              <span className={styles.achievementTitleRow}>
-                <span className={styles.achievementTitle}>{achievement.title}</span>
-                {achievement.tier && <span className={styles.achievementTier}>{achievement.tier}</span>}
-              </span>
-            </a>
+            <AchievementCard key={achievement.title} achievement={achievement} />
           ))}
         </div>
       </div>

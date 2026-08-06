@@ -84,6 +84,8 @@ export interface GithubAchievement {
   href: string;
   /** multiplier badge, e.g. "x2" — omit for single-tier achievements */
   tier?: string;
+  /** brand color driving the hover spotlight (glow, dots, border), matching the achievement's art */
+  color: string;
 }
 
 export interface DocPost {
