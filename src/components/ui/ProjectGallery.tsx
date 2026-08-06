@@ -28,7 +28,7 @@ export function ProjectGallery({ title, images, onClose }: ProjectGalleryProps) 
   }, [hasMultiple, images.length]);
 
   return (
-    <Lightbox labelledBy="project-gallery-title" onClose={onClose} dialogClassName={styles.dialog}>
+    <Lightbox labelledBy="project-gallery-title" onClose={onClose} dialogClassName={styles.dialog} maxWidth="min(960px, 92vw)">
       <div className={styles.imageWrap}>
         <img className={styles.image} src={images[index]} alt={`${title} — captura ${index + 1}`} />
 

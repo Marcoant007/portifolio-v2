@@ -15,6 +15,8 @@ export interface StackItem {
   name: string;
   category: StackCategory;
   iconUrl: string;
+  /** brand color driving the hover spotlight (glow, dots, border) */
+  color: string;
   /** some brand marks render dark-on-transparent and need inversion on dark backgrounds */
   invertOnDark?: boolean;
   /** the inverse case: light-on-transparent marks that disappear on a light background */
@@ -63,10 +65,20 @@ export interface EarnedBadge {
 export interface Course {
   institution: string;
   title: string;
+  /** display string, e.g. "Jul 2026" */
   year?: string;
+  description?: string;
   /** optional institution logo; omit to render a monogram badge */
   logo?: string;
   credentialUrl?: string;
+}
+
+export interface GithubAchievement {
+  title: string;
+  image: string;
+  href: string;
+  /** multiplier badge, e.g. "x2" — omit for single-tier achievements */
+  tier?: string;
 }
 
 export interface DocPost {

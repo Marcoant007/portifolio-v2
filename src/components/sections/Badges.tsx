@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { earnedBadges } from "../../data/badges";
 import { courses } from "../../data/courses";
-import type { EarnedBadge } from "../../types";
+import { githubAchievements } from "../../data/githubAchievements";
+import type { Course, EarnedBadge } from "../../types";
 import { Section } from "../ui/Section";
 import { RevealOnScroll } from "../ui/RevealOnScroll";
 import { Lightbox } from "../ui/Lightbox";
@@ -9,29 +10,12 @@ import { ArrowUpRightIcon } from "../ui/icons";
 import styles from "./Badges.module.css";
 import lightboxStyles from "../ui/Lightbox.module.css";
 
-const GITHUB_USER = "Marcoant007";
 const CREDLY_PROFILE_URL = "https://www.credly.com/users/marcoantdev/badges/credly";
 
-// Dynamically generated cards (shields.io / streak-stats / github-readme-stats).
-// These are third-party services — swap query params (theme, colors) or the
-// underlying service any time without touching the layout below.
-const statCards = [
-  {
-    alt: "GitHub stats",
-    src: `https://github-readme-stats.vercel.app/api?username=${GITHUB_USER}&show_icons=true&theme=transparent&hide_border=true&title_color=8B8FFF&icon_color=8B8FFF&text_color=A6ACB8`,
-  },
-  {
-    alt: "Linguagens mais usadas",
-    src: `https://github-readme-stats.vercel.app/api/top-langs/?username=${GITHUB_USER}&layout=compact&theme=transparent&hide_border=true&title_color=8B8FFF&text_color=A6ACB8`,
-  },
-  {
-    alt: "Streak de commits",
-    src: `https://streak-stats.demolab.com/?user=${GITHUB_USER}&theme=dark&hide_border=true&background=00000000`,
-  },
-];
+function CourseCard({ course, onOpen }: { course: Course; onOpen: () => void }) {
+  const expandable = Boolean(course.description);
 
-function CourseCard({ course }: { course: (typeof courses)[number] }) {
-  const card = (
+  const content = (
     <>
       <span className={styles.courseLogo}>
         {course.logo ? (
@@ -48,12 +32,20 @@ function CourseCard({ course }: { course: (typeof courses)[number] }) {
     </>
   );
 
+  if (expandable) {
+    return (
+      <button type="button" className={styles.courseCard} onClick={onOpen}>
+        {content}
+      </button>
+    );
+  }
+
   return course.credentialUrl ? (
     <a className={styles.courseCard} href={course.credentialUrl} target="_blank" rel="noreferrer">
-      {card}
+      {content}
     </a>
   ) : (
-    <div className={styles.courseCard}>{card}</div>
+    <div className={styles.courseCard}>{content}</div>
   );
 }
 
@@ -78,6 +70,7 @@ function BadgeCard({ badge, onOpen }: { badge: EarnedBadge; onOpen: () => void }
 
 export function Badges() {
   const [activeBadge, setActiveBadge] = useState<EarnedBadge | null>(null);
+  const [activeCourse, setActiveCourse] = useState<Course | null>(null);
 
   return (
     <Section
@@ -86,14 +79,6 @@ export function Badges() {
       title="Badges & certificações"
       subtitle="Estatísticas geradas dinamicamente a partir do GitHub, mais os cursos e certificados mais relevantes."
     >
-      <div className={styles.stats}>
-        {statCards.map((card) => (
-          <RevealOnScroll key={card.alt} className={styles.statCard}>
-            <img src={card.src} alt={card.alt} loading="lazy" decoding="async" />
-          </RevealOnScroll>
-        ))}
-      </div>
-
       <RevealOnScroll className={styles.earnedGroup}>
         <div className={styles.earnedHeader}>
           <h3 className={styles.certGroupTitle}>Badges conquistados</h3>
@@ -109,11 +94,45 @@ export function Badges() {
         </div>
       </RevealOnScroll>
 
+      <RevealOnScroll className={styles.earnedGroup}>
+        <h3 className={styles.certGroupTitle}>Conquistas no GitHub</h3>
+        <div className={styles.achievementGrid}>
+          {githubAchievements.map((achievement) => (
+            <a
+              key={achievement.title}
+              className={styles.achievement}
+              href={achievement.href}
+              target="_blank"
+              rel="noreferrer"
+              title={achievement.title}
+            >
+              <img
+                className={styles.achievementImage}
+                src={achievement.image}
+                alt=""
+                loading="lazy"
+                decoding="async"
+                width={88}
+                height={88}
+              />
+              <span className={styles.achievementTitleRow}>
+                <span className={styles.achievementTitle}>{achievement.title}</span>
+                {achievement.tier && <span className={styles.achievementTier}>{achievement.tier}</span>}
+              </span>
+            </a>
+          ))}
+        </div>
+      </RevealOnScroll>
+
       <RevealOnScroll>
         <h3 className={styles.certGroupTitle}>Cursos & formações</h3>
         <div className={styles.courseGrid}>
           {courses.map((course) => (
-            <CourseCard key={`${course.institution}-${course.title}`} course={course} />
+            <CourseCard
+              key={`${course.institution}-${course.title}`}
+              course={course}
+              onOpen={() => setActiveCourse(course)}
+            />
           ))}
         </div>
       </RevealOnScroll>
@@ -137,6 +156,33 @@ export function Badges() {
             <a
               className={lightboxStyles.credentialLink}
               href={activeBadge.credentialUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Ver credencial
+              <ArrowUpRightIcon width={14} height={14} />
+            </a>
+          )}
+        </Lightbox>
+      )}
+
+      {activeCourse && (
+        <Lightbox labelledBy="course-lightbox-title" onClose={() => setActiveCourse(null)}>
+          {activeCourse.logo ? (
+            <img className={lightboxStyles.image} src={activeCourse.logo} alt="" width={120} height={120} />
+          ) : (
+            <span className={styles.courseLightboxMonogram}>{activeCourse.institution[0]}</span>
+          )}
+          <h3 id="course-lightbox-title" className={lightboxStyles.title}>
+            {activeCourse.title}
+          </h3>
+          <span className={lightboxStyles.issuer}>{activeCourse.institution}</span>
+          {activeCourse.year && <span className={lightboxStyles.date}>{activeCourse.year}</span>}
+          {activeCourse.description && <p className={lightboxStyles.description}>{activeCourse.description}</p>}
+          {activeCourse.credentialUrl && (
+            <a
+              className={lightboxStyles.credentialLink}
+              href={activeCourse.credentialUrl}
               target="_blank"
               rel="noreferrer"
             >

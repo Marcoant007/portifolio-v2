@@ -1,4 +1,5 @@
 .chip {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,28 +8,100 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   background: var(--surface);
-  transition: border-color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease),
-    background-color var(--dur-fast) var(--ease);
+  overflow: hidden;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  --tech-color: var(--accent);
+  transition: border-color 250ms var(--ease), transform 250ms var(--ease), background-color 250ms var(--ease);
 }
 
 .chip:hover {
-  border-color: var(--accent-border);
-  background: var(--surface-hover);
-  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--tech-color) 55%, var(--border-strong));
+  transform: translateY(-2px);
 }
 
+/* layer 2: very soft light bleed that follows the cursor, tinted per-technology */
+.glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle 200px at var(--mouse-x) var(--mouse-y),
+    color-mix(in srgb, var(--tech-color) 22%, transparent),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 250ms var(--ease);
+  pointer-events: none;
+}
+
+/* layer 3: dotted grid, only revealed inside the spotlight mask around the cursor */
+.dots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--tech-color) 85%, transparent) 1.2px,
+    transparent 1.4px
+  );
+  background-size: 8px 8px;
+  -webkit-mask-image: radial-gradient(
+    circle 130px at var(--mouse-x) var(--mouse-y),
+    black 0%,
+    rgba(0, 0, 0, 0.7) 35%,
+    transparent 75%
+  );
+  mask-image: radial-gradient(
+    circle 130px at var(--mouse-x) var(--mouse-y),
+    black 0%,
+    rgba(0, 0, 0, 0.7) 35%,
+    transparent 75%
+  );
+  opacity: 0;
+  transition: opacity 250ms var(--ease);
+  pointer-events: none;
+}
+
+.chip:hover .glow,
+.chip:hover .dots {
+  opacity: 1;
+}
+
+/* touch devices never update --mouse-x/y, so give them a fixed, discreet, non-tracking version instead */
+@media (hover: none) {
+  .chip:active .glow {
+    opacity: 0.6;
+  }
+  .chip:active .dots {
+    opacity: 0.4;
+  }
+}
+
+/* layer 4: icon + label, always above the decorative layers */
 .iconWrap {
+  position: relative;
+  z-index: 1;
   width: 34px;
   height: 34px;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 250ms var(--ease);
+}
+
+.chip:hover .iconWrap {
+  transform: scale(1.04);
 }
 
 .icon {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  transition: filter 250ms var(--ease);
+}
+
+/* skip the glow on icons that already rely on `filter` for dark/light inversion */
+.chip:hover .icon:not(.invertDark):not(.invertLight) {
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--tech-color) 55%, transparent));
 }
 
 /* dark-colored marks (e.g. Prisma, GitHub) need inverting to stay visible on a dark surface */
@@ -52,7 +125,14 @@
 }
 
 .name {
+  position: relative;
+  z-index: 1;
   font-size: var(--fs-xs);
   color: var(--text-secondary);
   text-align: center;
+  transition: color 250ms var(--ease);
+}
+
+.chip:hover .name {
+  color: var(--text-primary);
 }

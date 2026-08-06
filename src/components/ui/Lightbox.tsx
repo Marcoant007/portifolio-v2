@@ -7,12 +7,14 @@ interface LightboxProps {
   onClose: () => void;
   children: ReactNode;
   labelledBy: string;
-  /** extra class merged onto the dialog — use it to override max-width per use case */
+  /** extra class merged onto the dialog — use it for padding/layout tweaks, not max-width (see maxWidth prop) */
   dialogClassName?: string;
+  /** overrides the dialog's max-width; set as inline style so it always wins regardless of CSS bundling order */
+  maxWidth?: string;
 }
 
 /** Generic modal shell: overlay + dialog + close button, Escape key and backdrop click both close it. */
-export function Lightbox({ onClose, children, labelledBy, dialogClassName }: LightboxProps) {
+export function Lightbox({ onClose, children, labelledBy, dialogClassName, maxWidth }: LightboxProps) {
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") onClose();
@@ -29,6 +31,7 @@ export function Lightbox({ onClose, children, labelledBy, dialogClassName }: Lig
     <div className={styles.overlay} onClick={onClose}>
       <div
         className={[styles.dialog, dialogClassName].filter(Boolean).join(" ")}
+        style={maxWidth ? { maxWidth } : undefined}
         role="dialog"
         aria-modal="true"
         aria-labelledby={labelledBy}
