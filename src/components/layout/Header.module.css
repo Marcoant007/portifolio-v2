@@ -1,0 +1,113 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.logoMark {
+  color: var(--accent);
+}
+
+.nav {
+  display: none;
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.navLink {
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: color var(--dur-fast) var(--ease);
+  position: relative;
+}
+
+.navLink:hover {
+  color: var(--text-primary);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.menuButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+}
+
+.mobilePanel {
+  border-top: 1px solid var(--border);
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height var(--dur-med) var(--ease);
+}
+
+.mobilePanel.open {
+  max-height: 320px;
+}
+
+.mobileList {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-4) 0;
+  gap: var(--space-1);
+}
+
+.mobileLink {
+  display: block;
+  padding: var(--space-3) 0;
+  font-size: var(--fs-md);
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border);
+}
+
+.mobileLink:hover {
+  color: var(--accent);
+}
+
+@media (min-width: 860px) {
+  .nav {
+    display: block;
+  }
+
+  .menuButton {
+    display: none;
+  }
+
+  .mobilePanel {
+    display: none;
+  }
+}

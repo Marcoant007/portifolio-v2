@@ -1,0 +1,146 @@
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-7);
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 21px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: var(--border);
+}
+
+.item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: var(--space-5);
+}
+
+.badge {
+  position: relative;
+  z-index: 1;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.badgeCurrent {
+  border-color: var(--accent-border);
+  color: var(--accent);
+  background: var(--accent-soft);
+  box-shadow: 0 0 0 4px var(--bg);
+}
+
+.logo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.content {
+  padding-bottom: var(--space-2);
+}
+
+.headRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2) var(--space-3);
+}
+
+.role {
+  font-size: var(--fs-md);
+}
+
+.company {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.meta {
+  margin-top: var(--space-1);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--text-tertiary);
+}
+
+.currentTag {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-border);
+  border-radius: var(--radius-pill);
+  padding: 0.15rem 0.55rem;
+}
+
+.summary {
+  margin-top: var(--space-3);
+  color: var(--text-secondary);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-normal);
+  max-width: 62ch;
+}
+
+.highlights {
+  margin-top: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.highlights li {
+  position: relative;
+  padding-left: var(--space-4);
+  color: var(--text-secondary);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-normal);
+}
+
+.highlights li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--text-tertiary);
+}
+
+@media (max-width: 560px) {
+  .timeline::before {
+    left: 17px;
+  }
+
+  .item {
+    grid-template-columns: 36px 1fr;
+    gap: var(--space-4);
+  }
+
+  .badge {
+    width: 36px;
+    height: 36px;
+    font-size: var(--fs-xs);
+  }
+}

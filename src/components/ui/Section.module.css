@@ -1,0 +1,40 @@
+.section {
+  padding-block: var(--space-9);
+  border-top: 1px solid var(--border);
+}
+
+.header {
+  margin-bottom: var(--space-7);
+  max-width: 640px;
+}
+
+.eyebrow {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-bottom: var(--space-3);
+}
+
+.title {
+  font-size: var(--fs-2xl);
+}
+
+.subtitle {
+  margin-top: var(--space-4);
+  color: var(--text-secondary);
+  font-size: var(--fs-md);
+  line-height: var(--lh-snug);
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding-block: var(--space-8);
+  }
+
+  .title {
+    font-size: var(--fs-xl);
+  }
+}
