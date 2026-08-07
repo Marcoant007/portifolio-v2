@@ -16,9 +16,22 @@ const CREDLY_PROFILE_URL = "https://www.credly.com/users/marcoantdev/badges/cred
 
 function BadgeCard({ badge, onOpen }: { badge: EarnedBadge; onOpen: () => void }) {
   const tiltRef = useCardTilt<HTMLButtonElement>();
+  const spotlightRef = usePointerSpotlight<HTMLButtonElement>();
+  const setRefs = (node: HTMLButtonElement | null) => {
+    tiltRef.current = node;
+    spotlightRef.current = node;
+  };
 
   return (
-    <button ref={tiltRef} type="button" className={styles.badgeCard} onClick={onOpen}>
+    <button
+      ref={setRefs}
+      type="button"
+      className={styles.badgeCard}
+      onClick={onOpen}
+      style={{ "--tech-color": badge.color } as CSSProperties}
+    >
+      <span className={styles.glow} aria-hidden="true" />
+      <span className={styles.dots} aria-hidden="true" />
       <img
         className={styles.badgeImage}
         src={badge.image}

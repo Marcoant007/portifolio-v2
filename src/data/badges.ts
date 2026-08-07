@@ -19,6 +19,7 @@ export const earnedBadges: EarnedBadge[] = [
     image: ibmCybersecurityBadge,
     description:
       "Conceitos fundamentais de segurança da informação: tipos de ameaças e ataques, princípios de confidencialidade/integridade/disponibilidade, gestão de riscos e boas práticas de defesa.",
+    color: "#ec4899",
   },
   {
     title: "AI Literacy",
@@ -27,6 +28,7 @@ export const earnedBadges: EarnedBadge[] = [
     image: aiLiteracyBadge,
     description:
       "Alfabetização em inteligência artificial: como modelos de IA funcionam, onde se aplicam no dia a dia e considerações éticas e de responsabilidade no uso dessas ferramentas.",
+    color: "#2dd4bf",
   },
   {
     title: "AWS Educate Getting Started with Serverless - Training Badge",
@@ -35,6 +37,7 @@ export const earnedBadges: EarnedBadge[] = [
     image: awsServerlessBadge,
     description:
       "Introdução à computação serverless na AWS — conceitos de funções como serviço, eventos e quando trocar servidores gerenciados por arquiteturas orientadas a eventos.",
+    color: "#3b82f6",
   },
   {
     title: "AWS Knowledge: Amazon EKS - Training Badge",
@@ -43,6 +46,7 @@ export const earnedBadges: EarnedBadge[] = [
     image: awsEksBadge,
     description:
       "Fundamentos do Amazon Elastic Kubernetes Service: orquestração de containers gerenciada, arquitetura de cluster e integração com o ecossistema AWS.",
+    color: "#ec4899",
   },
   {
     title: "Claude Partner Badge - Claude Code",
@@ -51,6 +55,7 @@ export const earnedBadges: EarnedBadge[] = [
     image: claudePartnerBadge,
     description:
       "Reconhecimento da Anthropic pelo uso do Claude Code no fluxo de desenvolvimento — da automação de tarefas de engenharia à condução de projetos complexos com um agente de IA.",
+    color: "#cc785c",
   },
   {
     title: "Data Streaming Engineer — Foundations",
@@ -59,5 +64,6 @@ export const earnedBadges: EarnedBadge[] = [
     description:
       "Fundamentos de streaming de dados com Apache Kafka e Confluent: produtores/consumidores, tópicos e partições, e os padrões de arquitetura orientada a eventos em tempo real.",
     credentialUrl: "https://certificates.confluent.io/27cc15d5-19b6-44e7-bc7b-ae987dd0c0f7#acc.Y82Mh6cR",
+    color: "#3b82f6",
   },
 ];

@@ -7,6 +7,14 @@
   padding-block: var(--space-8);
 }
 
+.splineBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .glow {
   position: absolute;
   top: -25%;
@@ -19,9 +27,26 @@
   will-change: transform;
 }
 
+/* dims the Spline scene enough to keep the heading/tagline readable
+   wherever the animation gets bright, without flattening it completely */
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(
+    100deg,
+    color-mix(in srgb, var(--bg) 82%, transparent) 0%,
+    color-mix(in srgb, var(--bg) 60%, transparent) 40%,
+    color-mix(in srgb, var(--bg) 25%, transparent) 65%,
+    color-mix(in srgb, var(--bg) 10%, transparent) 85%
+  );
+  pointer-events: none;
+}
+
 .hero :global(.container) {
   position: relative;
   z-index: 1;
+  pointer-events: none;
 }
 
 .badge {
@@ -73,14 +98,15 @@
   flex-wrap: wrap;
   align-items: center;
   gap: var(--space-5);
+  pointer-events: auto;
 }
 
 .cta {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  background: var(--accent);
-  color: var(--on-accent);
+  background: #ffffff;
+  color: #0a0b0f;
   font-weight: 600;
   font-size: var(--fs-sm);
   padding: 0.85rem 1.4rem;

@@ -60,6 +60,7 @@ export interface EarnedBadge {
   /** display string, e.g. "Emitida 5 de ago. de 2026" or "Expira em 31 de jan. de 2027" */
   date?: string;
   credentialUrl?: string;
+  color: string;
 }
 
 export interface Course {

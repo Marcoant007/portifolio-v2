@@ -51,7 +51,13 @@ export function Hero() {
 
   return (
     <section id="hero" className={styles.hero} aria-label="Apresentação" ref={rootRef}>
+      <spline-viewer
+        class={styles.splineBg}
+        url="https://prod.spline.design/gx6Uyx4sAsyTX7XE/scene.splinecode"
+        aria-hidden="true"
+      />
       <div ref={glowRef} className={styles.glow} aria-hidden="true" />
+      <div className={styles.scrim} aria-hidden="true" />
       <div className="container">
         <span ref={addItemRef} className={styles.badge}>
           <span className={styles.badgeDot} aria-hidden="true" />
