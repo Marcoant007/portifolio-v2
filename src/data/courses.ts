@@ -25,6 +25,10 @@ import certReactRocketseat from "../assets/images/certificates/Certificado_Funda
 import certDevopsCultureRocketseat from "../assets/images/certificates/Certificado_Fundamentos da Cultura DevOps.jpg";
 import certCleanCodeRocketseat from "../assets/images/certificates/Certificado_Clean Code.jpg";
 import certEngenhariaPromptRocketseat from "../assets/images/certificates/Certificado_Engenharia de Prompt.jpg";
+import certSqlBasicHackerrank from "../assets/images/certificates/sql_basic certificate.jpg";
+import certSoftwareEngineerHackerrank from "../assets/images/certificates/software_engineer certificate.jpg";
+import certJavaBasicHackerrank from "../assets/images/certificates/java_basic certificate.jpg";
+import certJavascriptBasicHackerrank from "../assets/images/certificates/javascript_basic certificate.jpg";
 
 // (Claude Partner Badge - Claude Code já aparece em "Badges conquistados",
 // com imagem própria, então não repete aqui.)
@@ -107,20 +111,37 @@ export const courses: Course[] = [
     certificateImage: certDesignPatternsUdemy,
     credentialUrl: "https://ude.my/UC-b36084ae-32c6-4ffb-a6b1-a084f6036f05",
   },
-  { institution: "HackerRank", title: "SQL (Basic) Certificate", year: "Jan 2025", logo: hackerrankLogo },
+  {
+    institution: "HackerRank",
+    title: "SQL (Basic) Certificate",
+    year: "Jun 2024",
+    logo: hackerrankLogo,
+    certificateImage: certSqlBasicHackerrank,
+    credentialUrl: "https://www.hackerrank.com/certificates/iframe/7a8eaa7b3483",
+  },
   {
     institution: "HackerRank",
     title: "Software Engineer Certificate",
-    year: "Jan 2025",
+    year: "Fev 2024",
     logo: hackerrankLogo,
+    certificateImage: certSoftwareEngineerHackerrank,
     credentialUrl: "https://www.hackerrank.com/certificates/iframe/9382276dc038",
   },
   {
     institution: "HackerRank",
     title: "Java (Basic) Certificate",
-    year: "Jan 2023",
+    year: "Ago 2023",
     logo: hackerrankLogo,
+    certificateImage: certJavaBasicHackerrank,
     credentialUrl: "https://www.hackerrank.com/certificates/iframe/e04bcfb8be45",
+  },
+  {
+    institution: "HackerRank",
+    title: "JavaScript (Basic) Certificate",
+    year: "Ago 2023",
+    logo: hackerrankLogo,
+    certificateImage: certJavascriptBasicHackerrank,
+    credentialUrl: "https://www.hackerrank.com/certificates/iframe/6fd87c87afbe",
   },
   {
     institution: "Rocketseat",
