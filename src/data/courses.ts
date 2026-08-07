@@ -23,6 +23,8 @@ import certNlwUniteDevopsRocketseat from "../assets/images/certificates/Certific
 import certDockerRocketseat from "../assets/images/certificates/Certificado_Containers com Docker e Docker Compose.jpg";
 import certReactRocketseat from "../assets/images/certificates/Certificado_Fundamentos do React.jpg";
 import certDevopsCultureRocketseat from "../assets/images/certificates/Certificado_Fundamentos da Cultura DevOps.jpg";
+import certCleanCodeRocketseat from "../assets/images/certificates/Certificado_Clean Code.jpg";
+import certEngenhariaPromptRocketseat from "../assets/images/certificates/Certificado_Engenharia de Prompt.jpg";
 
 // (Claude Partner Badge - Claude Code já aparece em "Badges conquistados",
 // com imagem própria, então não repete aqui.)
@@ -75,6 +77,7 @@ export const courses: Course[] = [
     title: "Engenharia de Prompt",
     year: "Out 2025",
     logo: rocketseatLogo,
+    certificateImage: certEngenhariaPromptRocketseat,
     credentialUrl: "https://app.rocketseat.com.br/certificates/997f7ded-22b8-4ddf-b0f3-3cb03d223669",
   },
   {
@@ -83,6 +86,7 @@ export const courses: Course[] = [
     year: "Ago 2025",
     logo: rocketseatLogo,
     certificateImage: certN8nRocketseat,
+    credentialUrl: "https://app.rocketseat.com.br/certificates/02aa5cdb-0056-4fe4-a587-3039d67de68b",
   },
   { institution: "DevSuperior", title: "Full Stack Java & React", year: "Abr 2024", logo: devSuperiorLogo },
   { institution: "Full Cycle", title: "Imersão Full Stack && Full Cycle", year: "Mai 2024", logo: fullCycleLogo },
@@ -142,8 +146,9 @@ export const courses: Course[] = [
   {
     institution: "Rocketseat",
     title: "Clean Code",
-    year: "Jul 2025",
+    year: "Jul 2024",
     logo: rocketseatLogo,
+    certificateImage: certCleanCodeRocketseat,
     credentialUrl: "https://app.rocketseat.com.br/certificates/4efc2672-c5f9-475d-a9a6-a4a7dfb9f97a",
   },
   {
