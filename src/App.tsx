@@ -9,7 +9,6 @@ import { Education } from "./components/sections/Education";
 import { Stack } from "./components/sections/Stack";
 import { Projects } from "./components/sections/Projects";
 import { Badges } from "./components/sections/Badges";
-import { Docs } from "./components/sections/Docs";
 import { Videos } from "./components/sections/Videos";
 
 export default function App() {
@@ -32,7 +31,7 @@ export default function App() {
         <Stack />
         <Projects />
         <Badges />
-        <Docs />
+        {/* <Docs /> */}
         <Videos />
       </main>
 

@@ -11,7 +11,7 @@ const NAV_ITEMS = [
   { href: "#stack", label: "Stack" },
   { href: "#projetos", label: "Projetos" },
   { href: "#badges", label: "Badges" },
-  { href: "#docs", label: "Documentação" },
+  // { href: "#docs", label: "Documentação" },
   { href: "#videos", label: "Vídeos" },
 ];
 
