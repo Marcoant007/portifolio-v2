@@ -15,6 +15,14 @@ import certAwsCloudPractitioner from "../assets/images/certificates/178308870503
 import certN8nRocketseat from "../assets/images/certificates/1755803448211.jpeg";
 import certAlgoritmosUdemy from "../assets/images/certificates/UC-9415fdc4-18ed-4086-be99-2147eb16d0d0.jpg";
 import certDesignPatternsUdemy from "../assets/images/certificates/UC-b36084ae-32c6-4ffb-a6b1-a084f6036f05.jpg";
+import certClaude101 from "../assets/images/certificates/claude101.jpg";
+import certNodeJsRocketseat from "../assets/images/certificates/Certificado_Node.js - 2021.jpg";
+import certNlwIaRocketseat from "../assets/images/certificates/Certificado_NLW IA.jpg";
+import certNlwExpertJavaRocketseat from "../assets/images/certificates/Certificado_NLW Expert trilha de Java.jpg";
+import certNlwUniteDevopsRocketseat from "../assets/images/certificates/Certificado_NLW Unite - DevOps.jpg";
+import certDockerRocketseat from "../assets/images/certificates/Certificado_Containers com Docker e Docker Compose.jpg";
+import certReactRocketseat from "../assets/images/certificates/Certificado_Fundamentos do React.jpg";
+import certDevopsCultureRocketseat from "../assets/images/certificates/Certificado_Fundamentos da Cultura DevOps.jpg";
 
 // (Claude Partner Badge - Claude Code já aparece em "Badges conquistados",
 // com imagem própria, então não repete aqui.)
@@ -54,7 +62,13 @@ export const courses: Course[] = [
     description:
       "Concluí o curso AWS Cloud Practitioner Essentials, da AWS Training and Certification. O conteúdo trouxe uma base importante sobre computação em nuvem, serviços essenciais da AWS, segurança, infraestrutura global, armazenamento, redes, bancos de dados, migração e modelo de responsabilidade compartilhada. Mais um passo na minha jornada de aprofundamento em AWS e arquitetura de soluções em nuvem.",
   },
-  { institution: "Anthropic", title: "Claude 101", year: "Jun 2026", logo: anthropicLogo },
+  {
+    institution: "Anthropic",
+    title: "Claude 101",
+    year: "Jun 2026",
+    logo: anthropicLogo,
+    certificateImage: certClaude101,
+  },
   { institution: "Harvard", title: "CS50's Course Web Development", year: "Out 2025", logo: harvardLogo },
   {
     institution: "Rocketseat",
@@ -104,9 +118,27 @@ export const courses: Course[] = [
     logo: hackerrankLogo,
     credentialUrl: "https://www.hackerrank.com/certificates/iframe/e04bcfb8be45",
   },
-  { institution: "Rocketseat", title: "NLW IA", year: "Set 2023", logo: rocketseatLogo },
-  { institution: "Rocketseat", title: "NLW Expert trilha de Java", year: "Fev 2024", logo: rocketseatLogo },
-  { institution: "Rocketseat", title: "NLW Unite - DevOps", year: "Abr 2024", logo: rocketseatLogo },
+  {
+    institution: "Rocketseat",
+    title: "NLW IA",
+    year: "Set 2023",
+    logo: rocketseatLogo,
+    certificateImage: certNlwIaRocketseat,
+  },
+  {
+    institution: "Rocketseat",
+    title: "NLW Expert trilha de Java",
+    year: "Fev 2024",
+    logo: rocketseatLogo,
+    certificateImage: certNlwExpertJavaRocketseat,
+  },
+  {
+    institution: "Rocketseat",
+    title: "NLW Unite - DevOps",
+    year: "Abr 2024",
+    logo: rocketseatLogo,
+    certificateImage: certNlwUniteDevopsRocketseat,
+  },
   {
     institution: "Rocketseat",
     title: "Clean Code",
@@ -119,6 +151,7 @@ export const courses: Course[] = [
     title: "Containers com Docker e Docker Compose",
     year: "Dez 2024",
     logo: rocketseatLogo,
+    certificateImage: certDockerRocketseat,
     credentialUrl: "https://app.rocketseat.com.br/certificates/4c105935-66c1-48b9-9eed-64c4d61a1227",
   },
   {
@@ -126,6 +159,7 @@ export const courses: Course[] = [
     title: "Fundamentos do React",
     year: "Mai 2025",
     logo: rocketseatLogo,
+    certificateImage: certReactRocketseat,
     credentialUrl: "https://app.rocketseat.com.br/certificates/23a05669-94d4-4fac-8a5a-b623c3319831",
   },
   {
@@ -133,6 +167,7 @@ export const courses: Course[] = [
     title: "Fundamentos da Cultura DevOps",
     year: "Jul 2024",
     logo: rocketseatLogo,
+    certificateImage: certDevopsCultureRocketseat,
     credentialUrl: "https://app.rocketseat.com.br/certificates/0e5d1053-8574-43f4-a2fd-d30822816703",
   },
   {
@@ -140,6 +175,7 @@ export const courses: Course[] = [
     title: "NodeJS",
     year: "Set 2022",
     logo: rocketseatLogo,
+    certificateImage: certNodeJsRocketseat,
     credentialUrl: "https://app.rocketseat.com.br/certificates/af5bcd45-1dda-4958-a57a-49269d1407b9",
   },
 ];
