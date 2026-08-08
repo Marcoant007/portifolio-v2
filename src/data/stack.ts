@@ -31,7 +31,13 @@ export const stack: StackItem[] = [
   { name: "MySQL", category: "Dados & Mensageria", iconUrl: `${DEVICON}/mysql/mysql-original.svg`, color: "#5D9FCB" },
   { name: "Redis", category: "Dados & Mensageria", iconUrl: `${DEVICON}/redis/redis-original.svg`, color: "#DC382D" },
   { name: "RabbitMQ", category: "Dados & Mensageria", iconUrl: `${DEVICON}/rabbitmq/rabbitmq-original.svg`, color: "#FF6600" },
-  { name: "Kafka", category: "Dados & Mensageria", iconUrl: `${DEVICON}/apachekafka/apachekafka-original.svg`, color: "#B4B7B9" },
+  {
+    name: "Kafka",
+    category: "Dados & Mensageria",
+    iconUrl: `${DEVICON}/apachekafka/apachekafka-original.svg`,
+    color: "#B4B7B9",
+    invertOnDark: true,
+  },
   {
     name: "Prisma",
     category: "Dados & Mensageria",

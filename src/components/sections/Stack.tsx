@@ -3,6 +3,7 @@ import { useGSAP } from "@gsap/react";
 import { stack, stackCategories } from "../../data/stack";
 import { Section } from "../ui/Section";
 import { IconChip } from "../ui/IconChip";
+import { IconOutlineFilter } from "../ui/IconOutlineFilter";
 import { gsap, EASE, revealCards, prefersReducedMotion } from "../../lib/gsap";
 import styles from "./Stack.module.css";
 
@@ -42,6 +43,7 @@ export function Stack() {
       title="Linguagens & tecnologias"
       subtitle="O que eu uso no dia a dia — e o que exploro nos meus laboratórios pessoais."
     >
+      <IconOutlineFilter />
       {stackCategories.map((category) => {
         const items = stack.filter((item) => item.category === category);
         return (

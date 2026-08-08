@@ -90,7 +90,8 @@
   transition: transform 250ms var(--ease);
 }
 
-.chip:hover .iconWrap {
+.chip:hover .iconWrap,
+.chip:active .iconWrap {
   transform: scale(1.04);
 }
 
@@ -98,32 +99,46 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
+  /* `none` can't be combined with other filter functions in the same list
+     (it's only valid as the filter property's sole value), so these no-op
+     defaults use a zero-radius blur instead — a real filter function that
+     changes nothing but stays composable with the others below. */
+  --invert-filter: blur(0);
+  --glow-filter: blur(0);
+  --outline-filter: blur(0);
+  filter: var(--invert-filter) var(--glow-filter) var(--outline-filter);
   transition: filter 250ms var(--ease);
 }
 
-/* skip the glow on icons that already rely on `filter` for dark/light inversion */
-.chip:hover .icon:not(.invertDark):not(.invertLight) {
-  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--tech-color) 55%, transparent));
+/* traces a thin contour around the logo's own silhouette (works on
+   transparent PNG/SVG marks) instead of a generic box/circle around it —
+   see IconOutlineFilter for why this needs an SVG dilate filter instead of
+   the usual stacked-drop-shadow CSS trick */
+.chip:hover .icon,
+.chip:active .icon {
+  --outline-filter: url("#icon-outline");
+}
+
+/* skip the tech-color glow on icons that already rely on `filter` for dark/light inversion */
+.chip:hover .icon:not(.invertDark):not(.invertLight),
+.chip:active .icon:not(.invertDark):not(.invertLight) {
+  --glow-filter: drop-shadow(0 0 6px color-mix(in srgb, var(--tech-color) 55%, transparent));
 }
 
 /* dark-colored marks (e.g. Prisma, GitHub) need inverting to stay visible on a dark surface */
 .invertDark {
-  filter: brightness(0) invert(1);
+  --invert-filter: brightness(0) invert(1);
   opacity: 0.88;
 }
 
 :global(:root[data-theme="light"]) .invertDark {
-  filter: none;
+  --invert-filter: blur(0);
   opacity: 1;
 }
 
 /* light-colored marks (e.g. Fastify's white bolt) need inverting to stay visible on a light surface */
-.invertLight {
-  filter: none;
-}
-
 :global(:root[data-theme="light"]) .invertLight {
-  filter: brightness(0);
+  --invert-filter: brightness(0);
 }
 
 .name {

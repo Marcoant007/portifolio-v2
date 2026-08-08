@@ -12,6 +12,15 @@ export const prefersReducedMotion = () =>
   typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /**
+ * Touch-primary devices (phones/tablets) already have smooth, native
+ * momentum scrolling — layering Lenis's JS-driven scroll on top of it just
+ * adds a second rAF loop fighting the browser's own compositor-thread
+ * scrolling, which is what made the page heavy on mobile.
+ */
+export const isCoarsePointer = () =>
+  typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches;
+
+/**
  * Shared "cards cascade in as the grid scrolls into view" motion used by
  * every card-grid section (Projects, Badges, Education, Stack, Docs,
  * Videos) — fade + rise + slight scale, batched so it fires once per card

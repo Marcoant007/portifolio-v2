@@ -1,19 +1,48 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import { profile, socialLinks } from "../../data/profile";
 import { SocialLinks } from "../ui/SocialLinks";
-import { gsap, EASE, prefersReducedMotion } from "../../lib/gsap";
+import { gsap, EASE, prefersReducedMotion, isCoarsePointer } from "../../lib/gsap";
 import styles from "./Hero.module.css";
+
+const SPLINE_VIEWER_SRC = "https://unpkg.com/@splinetool/viewer@1.12.98/build/spline-viewer.js";
+const SPLINE_SCENE_URL = "https://prod.spline.design/gx6Uyx4sAsyTX7XE/scene.splinecode";
 
 export function Hero() {
   const rootRef = useRef<HTMLElement | null>(null);
   const glowRef = useRef<HTMLDivElement | null>(null);
   const itemsRef = useRef<Array<HTMLElement | null>>([]);
   itemsRef.current = [];
+  const [showSpline, setShowSpline] = useState(false);
 
   const addItemRef = (el: HTMLElement | null) => {
     if (el) itemsRef.current.push(el);
   };
+
+  useEffect(() => {
+    // The Spline runtime is a multi-MB WebGL bundle — it's decorative only,
+    // so it's skipped on touch devices and prefers-reduced-motion (it was
+    // tanking mobile Lighthouse scores), and even on desktop it's only
+    // fetched once the page is idle so it can't block first paint.
+    if (isCoarsePointer() || prefersReducedMotion()) return;
+
+    let cancelled = false;
+    const idleId = window.requestIdleCallback(() => {
+      if (cancelled) return;
+      if (!document.querySelector(`script[src="${SPLINE_VIEWER_SRC}"]`)) {
+        const script = document.createElement("script");
+        script.type = "module";
+        script.src = SPLINE_VIEWER_SRC;
+        document.head.appendChild(script);
+      }
+      setShowSpline(true);
+    });
+
+    return () => {
+      cancelled = true;
+      window.cancelIdleCallback(idleId);
+    };
+  }, []);
 
   useGSAP(
     () => {
@@ -51,11 +80,9 @@ export function Hero() {
 
   return (
     <section id="hero" className={styles.hero} aria-label="Apresentação" ref={rootRef}>
-      <spline-viewer
-        class={styles.splineBg}
-        url="https://prod.spline.design/gx6Uyx4sAsyTX7XE/scene.splinecode"
-        aria-hidden="true"
-      />
+      {showSpline && (
+        <spline-viewer class={styles.splineBg} url={SPLINE_SCENE_URL} aria-hidden="true" />
+      )}
       <div ref={glowRef} className={styles.glow} aria-hidden="true" />
       <div className={styles.scrim} aria-hidden="true" />
       <div className="container">

@@ -1,15 +1,17 @@
 import { useEffect } from "react";
 import Lenis from "lenis";
-import { gsap, ScrollTrigger, prefersReducedMotion } from "../lib/gsap";
+import { gsap, ScrollTrigger, prefersReducedMotion, isCoarsePointer } from "../lib/gsap";
 
 /**
  * Drives page scroll through Lenis and syncs it to GSAP's ticker so
  * ScrollTrigger reads smoothed positions instead of raw scroll events.
- * Skipped under prefers-reduced-motion — native scroll behavior stays.
+ * Skipped under prefers-reduced-motion and on touch devices — native scroll
+ * behavior stays, and ScrollTrigger still works fine off native scroll
+ * events without Lenis in the loop.
  */
 export function useSmoothScroll() {
   useEffect(() => {
-    if (prefersReducedMotion()) return;
+    if (prefersReducedMotion() || isCoarsePointer()) return;
 
     const lenis = new Lenis({
       duration: 1.1,
