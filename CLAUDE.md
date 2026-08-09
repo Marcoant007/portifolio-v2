@@ -88,7 +88,7 @@ encapsula esse fluxo passo a passo.
 ```
 src/
   components/
-    layout/     Header, Footer, ThemeToggle
+    layout/     Sidebar (menu vertical fixo, recolhível em <860px), Footer, ThemeToggle
     ui/         componentes reutilizáveis: Section, Tag, ProjectCard, ProjectGallery,
                 IconChip, Lightbox, SocialLinks, icons.tsx (SVGs inline, sem lib de ícones)
     sections/   uma seção por arquivo, todas montadas em App.tsx: Hero, About,

@@ -88,7 +88,7 @@ export function Hero() {
       <div className="container">
         <span ref={addItemRef} className={styles.badge}>
           <span className={styles.badgeDot} aria-hidden="true" />
-          Atualmente na Luiza Labs
+          Atualmente na Zup Innovation
         </span>
 
         <h1 ref={addItemRef} className={styles.name}>
