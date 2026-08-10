@@ -5,6 +5,7 @@ import awsServerlessBadge from "../assets/images/badges/aws-serverless.webp";
 import claudePartnerBadge from "../assets/images/badges/claude-partner.webp";
 import confluentBadge from "../assets/images/badges/confluent-data-streaming.webp";
 import ibmCybersecurityBadge from "../assets/images/badges/ibm-cybersecurity.webp";
+import ibmMqBadge from "../assets/images/badges/ibm-mq-developer-essentials.png";
 
 /**
  * Real earned badges (Credly and equivalents). Add a new one by dropping the
@@ -65,5 +66,13 @@ export const earnedBadges: EarnedBadge[] = [
       "Fundamentos de streaming de dados com Apache Kafka e Confluent: produtores/consumidores, tópicos e partições, e os padrões de arquitetura orientada a eventos em tempo real.",
     credentialUrl: "https://certificates.confluent.io/27cc15d5-19b6-44e7-bc7b-ae987dd0c0f7#acc.Y82Mh6cR",
     color: "#3b82f6",
+  },
+  {
+    title: "IBM MQ Developer Essentials",
+    issuer: "IBM",
+    image: ibmMqBadge,
+    description:
+      "Conceitos fundamentais de mensageria com IBM MQ: criação e configuração de queue managers, e objetos como channels, queues e topics. Desenvolvimento de aplicações JMS para integração com IBM MQ, incluindo troubleshooting e resolução de problemas de conectividade.",
+    color: "#8b1043",
   },
 ];
