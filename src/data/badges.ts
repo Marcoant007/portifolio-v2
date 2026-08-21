@@ -6,6 +6,7 @@ import claudePartnerBadge from "../assets/images/badges/claude-partner.webp";
 import confluentBadge from "../assets/images/badges/confluent-data-streaming.webp";
 import ibmCybersecurityBadge from "../assets/images/badges/ibm-cybersecurity.webp";
 import ibmMqBadge from "../assets/images/badges/ibm-mq-developer-essentials.png";
+import ibmKafkaBadge from "../assets/images/badges/simplifying-data-pipelines-with-apache-kafka.png";
 
 /**
  * Real earned badges (Credly and equivalents). Add a new one by dropping the
@@ -13,6 +14,14 @@ import ibmMqBadge from "../assets/images/badges/ibm-mq-developer-essentials.png"
  * entry here — the grid and the lightbox pick it up automatically.
  */
 export const earnedBadges: EarnedBadge[] = [
+  {
+    title: "Simplifying Data Pipelines with Apache Kafka",
+    issuer: "IBM Skills Network",
+    image: ibmKafkaBadge,
+    description:
+      "Formação intermediária sobre simplificação de pipelines de dados com Apache Kafka.",
+    color: "#8b1043",
+  },
   {
     title: "Cybersecurity Fundamentals",
     issuer: "IBM SkillsBuild",
