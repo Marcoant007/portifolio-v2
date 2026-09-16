@@ -1,0 +1,33 @@
+<svg width="600" height="600" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="40" y1="40" x2="560" y2="560" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0D7367"/>
+      <stop offset="0.5" stop-color="#0D6259"/>
+      <stop offset="1" stop-color="#0A4D48"/>
+    </linearGradient>
+    <linearGradient id="band" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0F7B71"/>
+      <stop offset="1" stop-color="#0D625C"/>
+    </linearGradient>
+  </defs>
+
+  <path d="M60 120C60 81.34 90.34 50 129 50H471C509.66 50 540 81.34 540 120V432C540 470.66 509.66 501 471 501H129C90.34 501 60 470.66 60 432V120Z" fill="url(#bg)"/>
+  <path d="M90 92H510V134H90V92Z" fill="#0B6B62" opacity="0.4"/>
+
+  <g transform="translate(0 10)">
+    <text x="300" y="190" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="118" fill="#F5F7F7">aws</text>
+    <path d="M170 232C210 215 238 217 272 229C298 238 323 241 352 236C376 232 402 219 440 228C473 236 497 239 511 222C475 253 450 262 428 263C397 265 369 254 337 251C292 247 256 262 209 268C167 273 126 264 95 242C119 224 144 220 170 232Z" fill="#F5F7F7"/>
+    <path d="M205 240C236 221 269 220 310 234" stroke="#F5F7F7" stroke-width="8" stroke-linecap="round"/>
+    <path d="M410 236C443 222 470 224 510 243" stroke="#F5F7F7" stroke-width="8" stroke-linecap="round"/>
+  </g>
+
+  <g>
+    <line x1="126" y1="287" x2="474" y2="287" stroke="#E7F0F0" stroke-width="6" opacity="0.9"/>
+    <text x="300" y="356" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="44" letter-spacing="6" fill="#F5F7F7">CLOUD QUEST</text>
+    <text x="300" y="432" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="74" fill="#F5F7F7">Cloud</text>
+    <text x="300" y="494" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="74" fill="#F5F7F7">Practitioner</text>
+  </g>
+
+  <rect x="60" y="500" width="480" height="68" rx="0" fill="#0B7A78"/>
+  <text x="300" y="548" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="34" letter-spacing="7" fill="#F5F7F7">TRAINED</text>
+</svg>

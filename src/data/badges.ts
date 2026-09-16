@@ -2,6 +2,8 @@ import type { EarnedBadge } from "../types";
 import aiLiteracyBadge from "../assets/images/badges/ai-literacy.webp";
 import awsEksBadge from "../assets/images/badges/aws-eks.webp";
 import awsServerlessBadge from "../assets/images/badges/aws-serverless.webp";
+import awsCloudQuestBadge from "../assets/images/badges/aws-cloud-quest-cloud-practitioner.svg";
+import awsFileStorageBadge from "../assets/images/badges/aws-knowledge-file-storage.svg";
 import claudePartnerBadge from "../assets/images/badges/claude-partner.webp";
 import confluentBadge from "../assets/images/badges/confluent-data-streaming.webp";
 import ibmCybersecurityBadge from "../assets/images/badges/ibm-cybersecurity.webp";
@@ -57,6 +59,24 @@ export const earnedBadges: EarnedBadge[] = [
     description:
       "Fundamentos do Amazon Elastic Kubernetes Service: orquestração de containers gerenciada, arquitetura de cluster e integração com o ecossistema AWS.",
     color: "#ec4899",
+  },
+  {
+    title: "AWS Cloud Quest: Cloud Practitioner",
+    issuer: "Amazon Web Services Training and Certification",
+    date: "Emitida em 2026",
+    image: awsCloudQuestBadge,
+    description:
+      "Badge do percurso AWS Cloud Quest focado em fundamentos de cloud computing, serviços AWS e arquitetura de soluções na nuvem.",
+    color: "#10b981",
+  },
+  {
+    title: "AWS Knowledge: File Storage",
+    issuer: "Amazon Web Services Training and Certification",
+    date: "Emitida em 2026",
+    image: awsFileStorageBadge,
+    description:
+      "Reconhecimento da trilha AWS Knowledge em armazenamento de arquivos na nuvem, com foco em serviços, padrões e boas práticas de persistência de dados.",
+    color: "#f472b6",
   },
   {
     title: "Claude Partner Badge - Claude Code",

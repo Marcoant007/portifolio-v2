@@ -1,0 +1,27 @@
+<svg width="600" height="600" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgPink" x1="70" y1="70" x2="530" y2="530" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F7D9E3"/>
+      <stop offset="1" stop-color="#E9B7D5"/>
+    </linearGradient>
+  </defs>
+
+  <path d="M45 118C45 78.2355 77.2355 46 117 46H483C522.765 46 555 78.2355 555 118V432C555 471.765 522.765 504 483 504H117C77.2355 504 45 471.765 45 432V118Z" fill="#F3D9E1" stroke="#FF7EB9" stroke-width="8"/>
+  <path d="M75 110H525V173C525 179.627 520.627 184 514 184H86C79.3726 184 75 179.627 75 173V110Z" fill="#F4CCD8"/>
+  <path d="M92 118H508V160H92V118Z" fill="#F3D9E1"/>
+
+  <g>
+    <text x="300" y="180" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="104" fill="#2D3A47">aws</text>
+    <path d="M175 212C210 198 240 198 272 208C302 217 330 220 354 212C377 205 398 192 434 201C466 210 489 212 502 198C474 224 448 236 426 238C392 242 366 232 336 229C292 225 251 239 211 248C168 257 130 248 101 227C120 214 146 210 175 212Z" fill="#2D3A47"/>
+    <path d="M204 216C234 200 268 205 306 219" stroke="#2D3A47" stroke-width="8" stroke-linecap="round"/>
+    <path d="M404 213C439 201 469 204 503 222" stroke="#2D3A47" stroke-width="8" stroke-linecap="round"/>
+  </g>
+
+  <line x1="120" y1="276" x2="480" y2="276" stroke="#2D3A47" stroke-width="6" opacity="0.8"/>
+  <text x="300" y="340" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="38" letter-spacing="6" fill="#2D3A47">KNOWLEDGE</text>
+
+  <text x="300" y="440" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="78" fill="#2D3A47">File Storage</text>
+
+  <rect x="70" y="468" width="460" height="68" fill="#F29EC2"/>
+  <text x="300" y="515" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="34" letter-spacing="7" fill="#F8F8F8">TRAINED</text>
+</svg>
