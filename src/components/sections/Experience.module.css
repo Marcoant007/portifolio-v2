@@ -85,9 +85,9 @@
 }
 
 .companySubtitleLogo {
-  height: 18px;
+  height: 28px;
   width: auto;
-  border-radius: 6px;
+  border-radius: 8px;
   object-fit: contain;
   display: block;
 }

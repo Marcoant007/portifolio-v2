@@ -1,4 +1,5 @@
 import type { Experience } from "../types";
+import zupLogo from "../assets/images/logos/zup.svg";
 import luizalabsLogo from "../assets/images/logos/logo luiza labs.jpeg";
 import yoogaLogo from "../assets/images/logos/logoyooga.jpeg";
 import etaureLogo from "../assets/images/logos/logoetaure.jpeg";
@@ -19,8 +20,9 @@ export const experience: Experience[] = [
     current: true,
     location: "Uberlândia, MG",
     summary:
-      "Novo ciclo como Software Engineer Sênior, dando sequência à atuação com sistemas backend distribuídos e arquitetura de microservices.",
+      "Atuação como Desenvolvedor Backend Sênior, atualmente alocado em projetos para a B3, trabalhando no desenvolvimento e evolução de sistemas distribuídos e integrações de alta criticidade.\n\n- Tecnologias e conceitos: Java 21, Quarkus, REST APIs, mensageria, sistemas distribuídos, arquitetura orientada a eventos, Arquitetura Hexagonal, Clean Architecture, SOLID, AWS, Docker, Kubernetes, testes automatizados, observabilidade e CI/CD.",
     highlights: [],
+    logo: zupLogo,
     companySubtitle: "Terceirizado pela Zup e atuando dentro da B3",
   },
   {
