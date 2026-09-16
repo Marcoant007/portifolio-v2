@@ -3,7 +3,7 @@ import { useGSAP } from "@gsap/react";
 import { experience } from "../../data/experience";
 import { Section } from "../ui/Section";
 import { gsap, EASE, prefersReducedMotion } from "../../lib/gsap";
-import b3Logo from "../../assets/images/logos/b3.svg";
+import b3Logo from "../../assets/images/logos/b3_oficial_logo.jpeg";
 import styles from "./Experience.module.css";
 
 export function ExperienceSection() {

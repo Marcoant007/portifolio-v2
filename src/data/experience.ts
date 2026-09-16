@@ -1,5 +1,7 @@
 import type { Experience } from "../types";
-import luizalabsLogo from "../assets/images/logos/luizalabs.svg";
+import luizalabsLogo from "../assets/images/logos/logo luiza labs.jpeg";
+import yoogaLogo from "../assets/images/logos/logoyooga.jpeg";
+import etaureLogo from "../assets/images/logos/logoetaure.jpeg";
 
 // Para colocar a logo de uma empresa: salve a imagem em
 // src/assets/images/logos/ (ex: zup.png), importe aqui em cima:
@@ -19,7 +21,6 @@ export const experience: Experience[] = [
     summary:
       "Novo ciclo como Software Engineer Sênior, dando sequência à atuação com sistemas backend distribuídos e arquitetura de microservices.",
     highlights: [],
-    logo: "https://media.licdn.com/dms/image/v2/D4E0BAQEPrNNXCXG9_g/img-crop_100/B4EZfA_oolHcAY-/0/1751289597787?e=1787788800&v=beta&t=IANNvP2z8oUuV5TxiX8mCeJfGsXbAIXkuCcqiUVwb2I",
     companySubtitle: "Terceirizado pela Zup e atuando dentro da B3",
   },
   {
@@ -76,7 +77,7 @@ export const experience: Experience[] = [
       "Boletins diários via WhatsApp com RabbitMQ para acompanhamento de vendas, estoque e fluxo de caixa",
       "Estruturação, desde o início, da integração de Pix via Itaú",
     ],
-    logo: "https://media.licdn.com/dms/image/v2/C4D0BAQFXQzki85X9yw/company-logo_100_100/company-logo_100_100/0/1630497623144/yoogatecnologia_logo?e=1787788800&v=beta&t=6DNFjJmsBtQ6VZtPG0DcY9kBFPMoWmPBmiLwUNfQo_o",
+    logo: yoogaLogo,
   },
   {
     company: "ETAURE",
@@ -88,6 +89,6 @@ export const experience: Experience[] = [
       "Aplicações web conectando frontend, backend, banco de dados e regras de negócio",
       "Soluções para organização e automação de processos internos",
     ],
-    logo: "https://media.licdn.com/dms/image/v2/D4D0BAQHIug08mqYs2w/company-logo_100_100/company-logo_100_100/0/1724359324615/etaurebr_logo?e=1787788800&v=beta&t=w06YMh6PsHEDBTr1ikeOHBDFFxPvhk3zkgR1q9EuTuY",
+    logo: etaureLogo,
   },
 ];
