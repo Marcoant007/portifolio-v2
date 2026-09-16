@@ -3,6 +3,7 @@ import { useGSAP } from "@gsap/react";
 import { experience } from "../../data/experience";
 import { Section } from "../ui/Section";
 import { gsap, EASE, prefersReducedMotion } from "../../lib/gsap";
+import b3Logo from "../../assets/images/logos/b3.svg";
 import styles from "./Experience.module.css";
 
 export function ExperienceSection() {
@@ -64,6 +65,21 @@ export function ExperienceSection() {
                   </h3>
                   {job.current && <span className={styles.currentTag}>atual</span>}
                 </div>
+
+                {job.companySubtitle && (
+                  <div className={styles.companySubtitleRow}>
+                    {job.company === "Zup Innovation" && (
+                      <img
+                        className={styles.companySubtitleLogo}
+                        src={b3Logo}
+                        alt="B3"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    )}
+                    <span className={styles.companySubtitle}>{job.companySubtitle}</span>
+                  </div>
+                )}
 
                 <div className={styles.meta}>
                   <span>{job.period}</span>

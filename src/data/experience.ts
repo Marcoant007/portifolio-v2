@@ -1,4 +1,5 @@
 import type { Experience } from "../types";
+import luizalabsLogo from "../assets/images/logos/luizalabs.svg";
 
 // Para colocar a logo de uma empresa: salve a imagem em
 // src/assets/images/logos/ (ex: zup.png), importe aqui em cima:
@@ -19,6 +20,7 @@ export const experience: Experience[] = [
       "Novo ciclo como Software Engineer Sênior, dando sequência à atuação com sistemas backend distribuídos e arquitetura de microservices.",
     highlights: [],
     logo: "https://media.licdn.com/dms/image/v2/D4E0BAQEPrNNXCXG9_g/img-crop_100/B4EZfA_oolHcAY-/0/1751289597787?e=1787788800&v=beta&t=IANNvP2z8oUuV5TxiX8mCeJfGsXbAIXkuCcqiUVwb2I",
+    companySubtitle: "Terceirizado pela Zup e atuando dentro da B3",
   },
   {
     company: "Luizalabs",
@@ -32,7 +34,7 @@ export const experience: Experience[] = [
       "Desenvolvimento e manutenção de serviços backend em Java, com APIs, mensageria e integrações",
       "Automações que reduzem trabalho manual e tornam fluxos operacionais mais confiáveis",
     ],
-    logo: "https://media.licdn.com/dms/image/v2/D4D0BAQGYEfbUwYeVJQ/company-logo_100_100/company-logo_100_100/0/1720719174919/luizalabs_logo?e=1787788800&v=beta&t=2yqWs-dDXX_Ezm1CwrQfURoDu2QIDO-3taqkEwtNuvU",
+    logo: luizalabsLogo,
   },
   {
     company: "Luizalabs",
@@ -45,7 +47,7 @@ export const experience: Experience[] = [
       "Colaboração com produto, design e engenharia para soluções técnicas sustentáveis",
       "Manutenção e evolução de sistemas internos com foco em clareza de código e estabilidade",
     ],
-    logo: "https://media.licdn.com/dms/image/v2/D4D0BAQGYEfbUwYeVJQ/company-logo_100_100/company-logo_100_100/0/1720719174919/luizalabs_logo?e=1787788800&v=beta&t=2yqWs-dDXX_Ezm1CwrQfURoDu2QIDO-3taqkEwtNuvU",
+    logo: luizalabsLogo,
   },
   {
     company: "Luizalabs",
@@ -60,7 +62,7 @@ export const experience: Experience[] = [
       "Mensageria com Kafka, RabbitMQ e Amazon SQS",
       "Participação em decisões técnicas, refatorações e documentação entre squads",
     ],
-    logo: "https://media.licdn.com/dms/image/v2/D4D0BAQGYEfbUwYeVJQ/company-logo_100_100/company-logo_100_100/0/1720719174919/luizalabs_logo?e=1787788800&v=beta&t=2yqWs-dDXX_Ezm1CwrQfURoDu2QIDO-3taqkEwtNuvU",
+    logo: luizalabsLogo,
   },
   {
     company: "Yooga",

@@ -77,6 +77,28 @@
   font-weight: 500;
 }
 
+.companySubtitleRow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+}
+
+.companySubtitleLogo {
+  height: 18px;
+  width: auto;
+  border-radius: 6px;
+  object-fit: contain;
+  display: block;
+}
+
+.companySubtitle {
+  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.02em;
+}
+
 .meta {
   margin-top: var(--space-1);
   display: flex;

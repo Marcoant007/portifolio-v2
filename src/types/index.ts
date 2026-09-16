@@ -50,6 +50,8 @@ export interface Experience {
   highlights: string[];
   /** optional company logo; omit to render a monogram badge */
   logo?: string;
+  /** optional secondary label displayed under the company name, e.g. "Terceirizado pela Zup na B3" */
+  companySubtitle?: string;
 }
 
 export interface EarnedBadge {
