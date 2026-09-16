@@ -1,5 +1,5 @@
 import type { Experience } from "../types";
-import zupLogo from "../assets/images/logos/zup.svg";
+import zupLogo from "../assets/images/logos/logozup.jpeg";
 import luizalabsLogo from "../assets/images/logos/logo luiza labs.jpeg";
 import yoogaLogo from "../assets/images/logos/logoyooga.jpeg";
 import etaureLogo from "../assets/images/logos/logoetaure.jpeg";
